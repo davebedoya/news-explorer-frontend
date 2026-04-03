@@ -1,0 +1,44 @@
+/* .mainPhoto {
+  width: 100%;
+  object-fit: cover;
+  height: 576px;
+  display: block;
+  position: relative;
+}*/
+/*
+.mainPhoto::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4); 
+}*/
+
+/* .mainPhoto {
+  width: 100%;
+  height: 576px;
+  background-image: url("../../assets/transparent-photo-not-logged-in.jpg");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.mainPhoto::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* tablet */
+/* @media (max-width: 1024px) {
+  .mainPhoto {
+    height: 400px;
+  }
+} */
+
+/* mobile */
+/* @media (max-width: 768px) {
+  .mainPhoto {
+    height: 536px;
+  }
+}  */

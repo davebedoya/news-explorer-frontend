@@ -1,0 +1,30 @@
+.header {
+  background-image: url("../../assets/transparent-photo-not-logged-in.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  position: relative;
+  min-height: 576px;
+}
+
+.header__overlay {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* tablet */
+@media (max-width: 1024px) {
+  .header {
+    height: 400px;
+  }
+}
+
+/* mobile */
+@media (max-width: 768px) {
+  .header {
+    height: 536px;
+  }
+}
