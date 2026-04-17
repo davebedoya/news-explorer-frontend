@@ -90,6 +90,13 @@
   }
 
   .nav--open {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 20;
+    box-sizing: border-box;
+
     background-color: #1a1b22;
     height: 174px;
     flex-direction: column;
@@ -120,9 +127,12 @@
   .mobile-menu {
     display: flex;
     flex-direction: column;
+    z-index: 2;
   }
 
   .nav__top {
+    z-index: 2;
+
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -172,5 +182,16 @@
     border: none;
     outline: none;
     cursor: pointer;
+  }
+
+  .nav--open-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 1;
   }
 }

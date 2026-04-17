@@ -5,10 +5,15 @@ import closebtn from "../../assets/mobile/close.svg";
 import menubtnNotLoggedIn from "../../assets/mobile/menu-not-logged-in.svg";
 import menubtnLoggedIn from "../../assets/mobile/menu-logged-in.svg";
 
-function Navigation() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+function Navigation({
+  isMobileMenuOpen,
+  setIsMobileMenuOpen,
+  isLoggedIn,
+  setIsLoggedIn,
+}) {
+  // const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -55,6 +60,7 @@ function Navigation() {
       {/* </div> */}
       {isMobile && isMobileMenuOpen && (
         <>
+          <div className="nav--open-backdrop"></div>
           <div className="mobile-menu">
             <NavLink className="mobile-menu__home-link" to="/">
               Home

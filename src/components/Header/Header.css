@@ -11,14 +11,20 @@
 .header__overlay {
   content: "";
   position: absolute;
+
   inset: 0;
   background-color: rgba(0, 0, 0, 0.4);
+  /* z-index: -2; */
 }
 
+.header__content {
+  position: relative;
+  z-index: 1;
+}
 /* tablet */
 @media (max-width: 1024px) {
   .header {
-    height: 400px;
+    min-height: 400px;
   }
 }
 
