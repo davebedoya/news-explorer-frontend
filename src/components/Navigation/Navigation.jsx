@@ -10,10 +10,9 @@ function Navigation({
   setIsMobileMenuOpen,
   isLoggedIn,
   setIsLoggedIn,
+  onLoginClick,
 }) {
-  // const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
-  // const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -25,9 +24,8 @@ function Navigation({
   }, []);
 
   return (
-    <nav className={`nav ${isMobileMenuOpen ? "nav--open" : ""}`}>
+    <nav className="nav">
       {!isMobile ? (
-        // <div className="nav__top">
         <>
           <h1 className="nav__logo">NewsExplorer</h1>
           <div className="nav__links">
@@ -37,11 +35,12 @@ function Navigation({
             <NavLink to="/saved-news" className="nav__link">
               Saved articles
             </NavLink>
-            <button className="header__auth-btn">Sign In</button>
+            <button className="header__auth-btn" onClick={onLoginClick}>
+              Sign In
+            </button>
           </div>
         </>
       ) : (
-        //  </div>
         <div className="nav__top">
           <h1 className="nav__logo">NewsExplorer</h1>
           <button
@@ -49,25 +48,44 @@ function Navigation({
             className="nav__mobile-menu-btn"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
-            {isMobileMenuOpen ? (
-              <img src={closebtn} alt="close menu" />
-            ) : (
-              <img src={menubtnNotLoggedIn} alt="menu" />
-            )}
+            <img
+              src={isMobileMenuOpen ? closebtn : menubtnNotLoggedIn}
+              alt={isMobileMenuOpen ? "close menu" : "menu"}
+            />
           </button>
         </div>
       )}
-      {/* </div> */}
       {isMobile && isMobileMenuOpen && (
         <>
-          <div className="nav--open-backdrop"></div>
-          <div className="mobile-menu">
-            <NavLink className="mobile-menu__home-link" to="/">
-              Home
-            </NavLink>
-            <button type="button" className="mobile-menu__auth-btn">
-              Sign in
-            </button>
+          <div
+            className="nav__open-backdrop"
+            onClick={() => setIsMobileMenuOpen(false)}
+          ></div>
+
+          <div className="nav__panel">
+            <div className="nav__top nav__top--panel">
+              <h1 className="nav__logo">NewsExplorer</h1>
+              <button
+                type="button"
+                className="nav__mobile-menu-btn"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <img src={closebtn} alt="close menu" />
+              </button>
+            </div>
+
+            <div className="mobile-menu">
+              <NavLink className="mobile-menu__home-link" to="/">
+                Home
+              </NavLink>
+              <button
+                type="button"
+                className="mobile-menu__auth-btn"
+                onClick={onLoginClick}
+              >
+                Sign in
+              </button>
+            </div>
           </div>
         </>
       )}

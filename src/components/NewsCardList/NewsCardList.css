@@ -1,0 +1,25 @@
+.news-card-list {
+  display: grid;
+  gap: 16px;
+  margin-top: 64px;
+  grid-template-columns: auto auto auto;
+  grid-template-rows: auto auto auto;
+}
+
+/* tablet */
+@media (max-width: 1024px) {
+  .news-card-list {
+    margin-top: 32px;
+    gap: 8px;
+  }
+}
+
+/* mobile */
+@media (max-width: 768px) {
+  .news-card-list {
+    margin-top: 58px;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+    gap: 10px;
+  }
+}

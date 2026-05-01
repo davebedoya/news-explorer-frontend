@@ -3,9 +3,7 @@ import Navigation from "../Navigation/Navigation";
 import SearchForm from "../SearchForm/SearchForm";
 import { useState } from "react";
 
-function Header() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
+function Header({ setIsLoggedIn, isLoggedIn, onLoginClick }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
@@ -17,6 +15,7 @@ function Header() {
           setIsMobileMenuOpen={setIsMobileMenuOpen}
           isLoggedIn={isLoggedIn}
           setIsLoggedIn={setIsLoggedIn}
+          onLoginClick={onLoginClick}
         />
         <SearchForm />
       </div>

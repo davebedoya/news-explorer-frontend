@@ -89,54 +89,53 @@
     padding: 0 16px;
   }
 
-  .nav--open {
-    position: absolute;
+  .nav__panel {
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 20;
     box-sizing: border-box;
-
     background-color: #1a1b22;
-    height: 174px;
-    flex-direction: column;
-    display: flex;
-    align-items: stretch;
+    min-height: 230px;
     padding: 16px;
-    border-radius: 0 0 20px 20px;
-    border-bottom: none;
+    border-radius: 0 0 16px 16px;
   }
 
-  .nav--open .nav__logo {
-    color: white;
+  .nav__panel .nav__logo {
+    position: relative;
+    top: 3px;
   }
 
-  .nav--open .nav__top::after {
-    /* border-bottom: 1px solid #d1d2d6; */
+  .nav__top--panel::after {
     content: "";
     position: absolute;
     left: -16px;
     right: -16px;
-    top: 39px;
+    bottom: -24px;
     height: 1px;
     background-color: rgba(209, 210, 214, 0.3);
   }
-  .nav--open .nav__mobile-menu-btn {
-    color: white;
+
+  .nav__open-backdrop {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 15;
   }
+
   .mobile-menu {
     display: flex;
     flex-direction: column;
-    z-index: 2;
+    position: relative;
+    z-index: 21;
+    margin-top: 32px;
   }
 
   .nav__top {
-    z-index: 2;
-
     display: flex;
     justify-content: space-between;
     width: 100%;
-
     position: relative;
     align-items: center;
   }
@@ -145,14 +144,19 @@
     font-family: Roboto;
     font-weight: 500;
     font-size: 18px;
-    leading-trim: NONE;
     line-height: 56px;
     letter-spacing: 0px;
     color: white;
   }
 
   .nav__mobile-menu-btn {
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 0;
   }
+
   .mobile-menu__auth-btn {
     margin-top: 22px;
     border: solid 1px white;
@@ -182,16 +186,5 @@
     border: none;
     outline: none;
     cursor: pointer;
-  }
-
-  .nav--open-backdrop {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    inset: 0;
-    background-color: rgba(0, 0, 0, 0.4);
-    z-index: 1;
   }
 }
