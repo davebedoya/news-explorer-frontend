@@ -5,11 +5,8 @@ function NewsCardList({ newsCards }) {
   return (
     <div className="news-card-list">
       {newsCards.map((item) => {
-        return <NewsCard />;
+        return <NewsCard key={item.url} article={item} />;
       })}
-      {/* <NewsCard />
-      <NewsCard />
-      <NewsCard /> */}
     </div>
   );
 }

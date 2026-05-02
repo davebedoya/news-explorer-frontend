@@ -160,10 +160,36 @@
 /* tablet */
 
 @media (max-width: 768px) {
-  .modal__content {
-  }
 }
 /* mobile */
 
 @media (max-width: 768px) {
+  .modal {
+    top: 67px;
+    bottom: 0;
+    background-color: transparent;
+    max-width: 100%;
+    align-items: stretch;
+    justify-content: flex-start;
+  }
+  .modal__content {
+    max-width: 100%;
+    padding: 16px;
+    height: 100%;
+    max-height: none;
+  }
+
+  .modal__submit {
+    max-width: 288px;
+  }
+
+  .modal__close {
+    right: 0;
+    /* top: -16px; */
+  }
+
+  .modal__close-icon {
+    height: 24px;
+    width: 24px;
+  }
 }

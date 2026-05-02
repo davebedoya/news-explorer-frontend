@@ -11,6 +11,7 @@ function Navigation({
   isLoggedIn,
   setIsLoggedIn,
   onLoginClick,
+  isModalOpen,
 }) {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
@@ -43,16 +44,18 @@ function Navigation({
       ) : (
         <div className="nav__top">
           <h1 className="nav__logo">NewsExplorer</h1>
-          <button
-            type="button"
-            className="nav__mobile-menu-btn"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
-            <img
-              src={isMobileMenuOpen ? closebtn : menubtnNotLoggedIn}
-              alt={isMobileMenuOpen ? "close menu" : "menu"}
-            />
-          </button>
+          {!isModalOpen && (
+            <button
+              type="button"
+              className="nav__mobile-menu-btn"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              <img
+                src={isMobileMenuOpen ? closebtn : menubtnNotLoggedIn}
+                alt={isMobileMenuOpen ? "close menu" : "menu"}
+              />
+            </button>
+          )}
         </div>
       )}
       {isMobile && isMobileMenuOpen && (
@@ -65,6 +68,7 @@ function Navigation({
           <div className="nav__panel">
             <div className="nav__top nav__top--panel">
               <h1 className="nav__logo">NewsExplorer</h1>
+
               <button
                 type="button"
                 className="nav__mobile-menu-btn"
@@ -81,7 +85,10 @@ function Navigation({
               <button
                 type="button"
                 className="mobile-menu__auth-btn"
-                onClick={onLoginClick}
+                onClick={() => {
+                  onLoginClick();
+                  setIsMobileMenuOpen(false);
+                }}
               >
                 Sign in
               </button>
