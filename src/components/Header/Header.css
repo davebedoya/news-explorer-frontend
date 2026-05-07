@@ -1,11 +1,22 @@
 .header {
+  width: 100%;
+  position: relative;
+}
+
+.header--home {
   background-image: url("../../assets/transparent-photo-not-logged-in.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  width: 100%;
-  position: relative;
   min-height: 576px;
+}
+
+.header--saved-news {
+  background: white;
+}
+
+.header--saved-news .header__overlay {
+  display: none;
 }
 
 .header__overlay {
@@ -17,6 +28,43 @@
 .header__content {
   position: relative;
   z-index: 1;
+}
+
+.header__saved-news {
+  padding: 40px 104px 56px;
+}
+
+.header__saved-news-label {
+  margin: 0;
+  font-family: "Roboto", serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  color: #1a1b2280;
+}
+
+.header__saved-news-title {
+  margin: 28px 0 0 0;
+  font-family: "Roboto Slab", serif;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 46px;
+}
+
+.header__saved-news-keywords {
+  margin: 30px 0 0 0;
+  font-family: "Roboto", serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.header__saved-news-keywords-span {
+  font-family: "Roboto", serif;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: 0px;
 }
 /* tablet */
 @media (max-width: 1024px) {

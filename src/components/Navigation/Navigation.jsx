@@ -12,6 +12,7 @@ function Navigation({
   setIsLoggedIn,
   onLoginClick,
   isModalOpen,
+  isHomePage,
 }) {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
@@ -25,18 +26,32 @@ function Navigation({
   }, []);
 
   return (
-    <nav className="nav">
+    <nav className={`nav ${!isHomePage ? "nav--saved-news" : ""}`}>
       {!isMobile ? (
         <>
-          <h1 className="nav__logo">NewsExplorer</h1>
+          <h1
+            className={`nav__logo ${!isHomePage ? "nav__logo--saved-news" : ""}`}
+          >
+            NewsExplorer
+          </h1>
           <div className="nav__links">
-            <NavLink to="/" className="nav__link">
+            <NavLink
+              to="/"
+              className={`nav__link ${!isHomePage ? "nav__link--saved-news" : ""}`}
+            >
               Home
             </NavLink>
-            <NavLink to="/saved-news" className="nav__link">
+            <NavLink
+              to="/saved-news"
+              className={`nav__link ${!isHomePage ? "nav__link--saved-news" : ""}`}
+            >
               Saved articles
             </NavLink>
-            <button className="header__auth-btn" onClick={onLoginClick}>
+            {/* <button className="header__auth-btn" onClick={onLoginClick}> */}
+            <button
+              className={`header__auth-btn ${!isHomePage ? "header__auth-btn--saved-news" : ""}`}
+              onClick={onLoginClick}
+            >
               Sign In
             </button>
           </div>

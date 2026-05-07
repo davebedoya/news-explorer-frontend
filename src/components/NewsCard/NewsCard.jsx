@@ -3,8 +3,9 @@ import treeHuggerPhoto from "../../assets/image_08.jpg";
 import bookmark from "../../assets/card/bookmark.svg";
 import bookmarkLiked from "../../assets/card/bookmark-liked.svg";
 import { useState } from "react";
+import trashIcon from "../../assets/saved-articles/icon/trash.svg";
 
-function NewsCard({ article }) {
+function NewsCard({ article, isSavedPage }) {
   const [isLiked, setIsLiked] = useState(false);
 
   const handleBookmarkClick = () => {
@@ -48,9 +49,12 @@ function NewsCard({ article }) {
         className="news-card__image"
       />
       <div className="news-card__text-container">
-        {/* <p className="news-card__date">November 4, 2020</p> */}
-        <p className="news-card__date">{dateConversion()}</p>
-
+        {/* <p className="news-card__date">{dateConversion()}</p> */}
+        <p className="news-card__date">
+          {article.publishedAt.includes("T")
+            ? dateConversion()
+            : article.publishedAt}
+        </p>
         <h2 className="news-card__title">{article.title}</h2>
         <p className="news-card__paragraph">{article.description}</p>
         <h3 className="news-card__publisher">{article.source.name}</h3>
@@ -63,9 +67,10 @@ function NewsCard({ article }) {
         }}
       >
         <img
-          src={isLiked ? bookmarkLiked : bookmark}
+          src={isSavedPage ? trashIcon : isLiked ? bookmarkLiked : bookmark}
           alt="bookmark icon"
-          className="news-card__bookmark-button-icon"
+          // className="news-card__bookmark-button-icon"
+          className={`news-card__bookmark-button-icon ${isSavedPage ? "news-card__action-button-icon_type_delete" : ""}`}
         />
       </button>
     </div>

@@ -4,25 +4,19 @@ import Header from "./components/Header/Header";
 import About from "./components/About/About";
 import Main from "./components/Main/Main";
 import Footer from "./components/Footer/Footer";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import LoginModal from "./components/LoginModal/LoginModal";
 import RegisterModal from "./components/RegisterModal/RegisterModal";
 import { getNews } from "./utils/api";
+import Preloader from "./components/Preloader/Preloader";
+import { Routes, Route } from "react-router-dom";
+import SavedNews from "./components/SavedNews/SavedNews";
+
 function App() {
   const [activeModal, setActiveModal] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [articles, setArticles] = useState([]);
-  const [userHasSearched, setHasSearched] = useState(false);
-
-  //   function nothingFound(articles) {
-  //     if (!userHasSearched) {
-  //       return
-  //     } else if (userHasSearched && articles.length === 0){
-  //       // show "Nothing Found"
-  //     } else(userHasSearched && articles.length > 0){
-  // return showMain;
-  //     }
-  //   }
+  const [articles, setArticles] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const closeModal = () => {
     setActiveModal("");
@@ -36,22 +30,18 @@ function App() {
     setActiveModal("register");
   };
 
-  // useEffect(() => {
-  //   getNews("nature")
-  //     .then((data) => {
-  //       console.log(data.articles);
-  //       setArticles(data.articles);
-  //     })
-  //     .catch((err) => console.error(err));
-  // }, []);
-
   const handleSearch = (searchInput) => {
+    setArticles(null);
+    setIsLoading(true);
     getNews(searchInput)
       .then((data) => {
         setArticles(data.articles);
-        setHasSearched(true);
+        // setHasSearched(false);
       })
-      .catch((err) => console.error(err));
+      .catch((err) => console.error(err))
+      .finally(() => {
+        setIsLoading(false);
+      });
   };
   return (
     <div className="app">
@@ -63,15 +53,34 @@ function App() {
           onSearch={handleSearch}
           isModalOpen={activeModal !== ""}
         />
-        {!userHasSearched && null}
-        {userHasSearched && articles.length === 0 && (
-          <div className="main">
-            <h1 className="main__heading">Nothing found</h1>
-            <p>Sorry, but nothing matched your search terms.</p>
-          </div>
-        )}
-        {userHasSearched && articles.length > 0 && <Main articles={articles} />}{" "}
-        <About />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <div>
+                {isLoading && <Preloader />}
+                {articles && articles.length === 0 && (
+                  <div className="main">
+                    <h1 className="main__heading">Nothing found</h1>
+                    <p>Sorry, but nothing matched your search terms.</p>
+                  </div>
+                )}
+                {articles && articles.length > 0 && (
+                  <Main articles={articles} />
+                )}
+                <About />
+              </div>
+            }
+          ></Route>
+          <Route
+            path="saved-news"
+            element={
+              // <ProtectedRoute isLoggedIn={isLoggedIn}>
+              <SavedNews />
+              // </ProtectedRoute>
+            }
+          ></Route>
+        </Routes>
         <Footer />
       </div>
       <LoginModal
