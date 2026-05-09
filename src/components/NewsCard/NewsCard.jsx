@@ -4,9 +4,11 @@ import bookmark from "../../assets/card/bookmark.svg";
 import bookmarkLiked from "../../assets/card/bookmark-liked.svg";
 import { useState } from "react";
 import trashIcon from "../../assets/saved-articles/icon/trash.svg";
+import trashIconHover from "../../assets/saved-articles/icon/trash-hover.svg";
 
 function NewsCard({ article, isSavedPage }) {
   const [isLiked, setIsLiked] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
 
   const handleBookmarkClick = () => {
     setIsLiked(!isLiked);
@@ -61,18 +63,31 @@ function NewsCard({ article, isSavedPage }) {
       </div>
       <button
         className="news-card__bookmark-button"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
         onClick={(e) => {
           e.stopPropagation();
           handleBookmarkClick();
         }}
       >
         <img
-          src={isSavedPage ? trashIcon : isLiked ? bookmarkLiked : bookmark}
-          alt="bookmark icon"
-          // className="news-card__bookmark-button-icon"
-          className={`news-card__bookmark-button-icon ${isSavedPage ? "news-card__action-button-icon_type_delete" : ""}`}
+          src={
+            isSavedPage
+              ? isHovered
+                ? trashIconHover
+                : trashIcon
+              : isLiked
+                ? bookmarkLiked
+                : bookmark
+          }
+          alt={isSavedPage ? "trash icon" : "bookmark icon"}
+          className="news-card__bookmark-button-icon"
         />
       </button>
+      {isSavedPage && isHovered && (
+        <div className="news-card__remove-tooltip">Remove from saved</div>
+      )}
+      {isSavedPage && <h3 className="news-card__keyword">{article.keyword}</h3>}
     </div>
   );
 }

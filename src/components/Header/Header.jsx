@@ -10,6 +10,7 @@ function Header({
   onLoginClick,
   onSearch,
   isModalOpen,
+  onSignOut,
 }) {
   const location = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -30,6 +31,7 @@ function Header({
           onLoginClick={onLoginClick}
           isModalOpen={isModalOpen}
           isHomePage={isHomePage}
+          onSignOut={onSignOut}
         />
         {isHomePage && <SearchForm onSearch={onSearch} />}
         {!isHomePage && (
@@ -40,7 +42,7 @@ function Header({
               Elise, you have 5 saved articles
             </h1>
             <p className="header__saved-news-keywords">
-              by keywords:{""}
+              by keywords:{" "}
               <span className="header__saved-news-keywords-span">
                 Nature, Yellowstone, and 2 other
               </span>

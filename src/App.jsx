@@ -11,12 +11,24 @@ import { getNews } from "./utils/api";
 import Preloader from "./components/Preloader/Preloader";
 import { Routes, Route } from "react-router-dom";
 import SavedNews from "./components/SavedNews/SavedNews";
+import SuccessModal from "./components/SuccessModal/SuccessModal";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [articles, setArticles] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+
+  const handleLogin = () => {
+    setIsLoggedIn(true);
+    localStorage.setItem("jwt", "fake-jwt");
+    closeModal();
+  };
+
+  const handleSignOut = () => {
+    setIsLoggedIn(false);
+    localStorage.removeItem("jwt");
+  };
 
   const closeModal = () => {
     setActiveModal("");
@@ -30,6 +42,9 @@ function App() {
     setActiveModal("register");
   };
 
+  const handleRegisterSuccess = () => {
+    setActiveModal("success");
+  };
   const handleSearch = (searchInput) => {
     setArticles(null);
     setIsLoading(true);
@@ -52,6 +67,7 @@ function App() {
           onLoginClick={handleLoginClick}
           onSearch={handleSearch}
           isModalOpen={activeModal !== ""}
+          onSignOut={handleSignOut}
         />
         <Routes>
           <Route
@@ -86,13 +102,18 @@ function App() {
       <LoginModal
         isOpen={activeModal === "login"}
         onClose={closeModal}
-        // onLogin={handleLogin}
+        onLogin={handleLogin}
         onSignupClick={handleRegisterClick}
       />
       <RegisterModal
         isOpen={activeModal === "register"}
         onClose={closeModal}
-        // onLogin={handleLogin}
+        onLoginClick={handleLoginClick}
+        onRegisterSuccess={handleRegisterSuccess}
+      />
+      <SuccessModal
+        isOpen={activeModal === "success"}
+        onClose={closeModal}
         onLoginClick={handleLoginClick}
       />
     </div>

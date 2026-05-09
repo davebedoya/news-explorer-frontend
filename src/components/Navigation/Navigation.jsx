@@ -1,10 +1,10 @@
 import "./Navigation.css";
 import { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import closebtn from "../../assets/mobile/close.svg";
 import menubtnNotLoggedIn from "../../assets/mobile/menu-not-logged-in.svg";
 import menubtnLoggedIn from "../../assets/mobile/menu-logged-in.svg";
-
+import logOutIcon from "../../assets/header/icon/logout.svg";
 function Navigation({
   isMobileMenuOpen,
   setIsMobileMenuOpen,
@@ -13,6 +13,7 @@ function Navigation({
   onLoginClick,
   isModalOpen,
   isHomePage,
+  onSignOut,
 }) {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
@@ -24,6 +25,8 @@ function Navigation({
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  const navigate = useNavigate();
 
   return (
     <nav className={`nav ${!isHomePage ? "nav--saved-news" : ""}`}>
@@ -41,24 +44,49 @@ function Navigation({
             >
               Home
             </NavLink>
-            <NavLink
-              to="/saved-news"
-              className={`nav__link ${!isHomePage ? "nav__link--saved-news" : ""}`}
-            >
-              Saved articles
-            </NavLink>
-            {/* <button className="header__auth-btn" onClick={onLoginClick}> */}
-            <button
-              className={`header__auth-btn ${!isHomePage ? "header__auth-btn--saved-news" : ""}`}
-              onClick={onLoginClick}
-            >
-              Sign In
-            </button>
+            {isLoggedIn && (
+              <NavLink
+                to="/saved-news"
+                className={`nav__link ${!isHomePage ? "nav__link--saved-news" : ""}`}
+              >
+                Saved articles
+              </NavLink>
+            )}
+            {!isLoggedIn && (
+              <button
+                className={`header__auth-btn ${!isHomePage ? "header__auth-btn--saved-news" : ""}`}
+                onClick={onLoginClick}
+              >
+                Sign In
+              </button>
+            )}
+            {isLoggedIn && (
+              <button
+                // className="header__auth-btn header__auth-btn-signed-in"
+                className={`header__auth-btn header__auth-btn-signed-in ${!isHomePage ? "header__auth-btn-signed-in--saved-news" : ""}`}
+                onClick={() => {
+                  onSignOut();
+                  navigate("/");
+                }}
+              >
+                Name{" "}
+                <img
+                  // className="header__auth-btn-signed-in-icon"
+                  className={`header__auth-btn-signed-in-icon ${!isHomePage ? "header__auth-btn-signed-in-icon--saved-news" : ""}`}
+                  src={logOutIcon}
+                />
+              </button>
+            )}
           </div>
         </>
       ) : (
         <div className="nav__top">
-          <h1 className="nav__logo">NewsExplorer</h1>
+          {/* <h1 className="nav__logo">NewsExplorer</h1> */}
+          <h1
+            className={`nav__logo ${!isHomePage ? "nav__logo--saved-news" : ""}`}
+          >
+            NewsExplorer
+          </h1>
           {!isModalOpen && (
             <button
               type="button"
@@ -66,7 +94,14 @@ function Navigation({
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
               <img
-                src={isMobileMenuOpen ? closebtn : menubtnNotLoggedIn}
+                // src={isMobileMenuOpen ? closebtn : menubtnNotLoggedIn}
+                src={
+                  isMobileMenuOpen
+                    ? closebtn
+                    : !isHomePage
+                      ? menubtnLoggedIn
+                      : menubtnNotLoggedIn
+                }
                 alt={isMobileMenuOpen ? "close menu" : "menu"}
               />
             </button>
