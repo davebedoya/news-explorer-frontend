@@ -49,6 +49,7 @@
   font-weight: 400;
   font-size: 40px;
   line-height: 46px;
+  max-width: 530px;
 }
 
 .header__saved-news-keywords {
@@ -70,6 +71,18 @@
 @media (max-width: 1024px) {
   .header {
     min-height: 400px;
+  }
+
+  .header__saved-news {
+    padding-left: 40px;
+  }
+
+  .header--saved-news {
+    min-height: 0;
+  }
+
+  .header__saved-news-title {
+    max-width: 336px;
   }
 }
 

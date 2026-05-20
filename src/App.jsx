@@ -51,7 +51,6 @@ function App() {
     getNews(searchInput)
       .then((data) => {
         setArticles(data.articles);
-        // setHasSearched(false);
       })
       .catch((err) => console.error(err))
       .finally(() => {
@@ -88,14 +87,7 @@ function App() {
               </div>
             }
           ></Route>
-          <Route
-            path="saved-news"
-            element={
-              // <ProtectedRoute isLoggedIn={isLoggedIn}>
-              <SavedNews />
-              // </ProtectedRoute>
-            }
-          ></Route>
+          <Route path="saved-news" element={<SavedNews />}></Route>
         </Routes>
         <Footer />
       </div>

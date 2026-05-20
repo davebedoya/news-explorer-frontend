@@ -32,11 +32,13 @@ function Navigation({
     <nav className={`nav ${!isHomePage ? "nav--saved-news" : ""}`}>
       {!isMobile ? (
         <>
-          <h1
-            className={`nav__logo ${!isHomePage ? "nav__logo--saved-news" : ""}`}
-          >
-            NewsExplorer
-          </h1>
+          <NavLink to="/" className="nav__logo-link">
+            <h1
+              className={`nav__logo ${!isHomePage ? "nav__logo--saved-news" : ""}`}
+            >
+              NewsExplorer
+            </h1>
+          </NavLink>
           <div className="nav__links">
             <NavLink
               to="/"
@@ -62,16 +64,14 @@ function Navigation({
             )}
             {isLoggedIn && (
               <button
-                // className="header__auth-btn header__auth-btn-signed-in"
                 className={`header__auth-btn header__auth-btn-signed-in ${!isHomePage ? "header__auth-btn-signed-in--saved-news" : ""}`}
                 onClick={() => {
                   onSignOut();
                   navigate("/");
                 }}
               >
-                Name{" "}
+                Elise{" "}
                 <img
-                  // className="header__auth-btn-signed-in-icon"
                   className={`header__auth-btn-signed-in-icon ${!isHomePage ? "header__auth-btn-signed-in-icon--saved-news" : ""}`}
                   src={logOutIcon}
                 />
@@ -81,12 +81,13 @@ function Navigation({
         </>
       ) : (
         <div className="nav__top">
-          {/* <h1 className="nav__logo">NewsExplorer</h1> */}
-          <h1
-            className={`nav__logo ${!isHomePage ? "nav__logo--saved-news" : ""}`}
-          >
-            NewsExplorer
-          </h1>
+          <NavLink to="/" className="nav__logo-link">
+            <h1
+              className={`nav__logo ${!isHomePage ? "nav__logo--saved-news" : ""}`}
+            >
+              NewsExplorer
+            </h1>
+          </NavLink>
           {!isModalOpen && (
             <button
               type="button"
@@ -94,7 +95,6 @@ function Navigation({
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
               <img
-                // src={isMobileMenuOpen ? closebtn : menubtnNotLoggedIn}
                 src={
                   isMobileMenuOpen
                     ? closebtn
@@ -117,7 +117,9 @@ function Navigation({
 
           <div className="nav__panel">
             <div className="nav__top nav__top--panel">
-              <h1 className="nav__logo">NewsExplorer</h1>
+              <NavLink to="/" className="nav__logo-link">
+                <h1 className="nav__logo">NewsExplorer</h1>
+              </NavLink>
 
               <button
                 type="button"
@@ -132,16 +134,40 @@ function Navigation({
               <NavLink className="mobile-menu__home-link" to="/">
                 Home
               </NavLink>
-              <button
-                type="button"
-                className="mobile-menu__auth-btn"
-                onClick={() => {
-                  onLoginClick();
-                  setIsMobileMenuOpen(false);
-                }}
-              >
-                Sign in
-              </button>
+              {isLoggedIn && (
+                <NavLink
+                  className="mobile-menu__home-link"
+                  to="/saved-news"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Saved articles
+                </NavLink>
+              )}
+              {!isLoggedIn && (
+                <button
+                  type="button"
+                  className="mobile-menu__auth-btn"
+                  onClick={() => {
+                    onLoginClick();
+                    setIsMobileMenuOpen(false);
+                  }}
+                >
+                  Sign in
+                </button>
+              )}
+              {isLoggedIn && (
+                <button
+                  type="button"
+                  className="mobile-menu__auth-btn"
+                  onClick={() => {
+                    onSignOut();
+                    setIsMobileMenuOpen(false);
+                    navigate("/");
+                  }}
+                >
+                  Sign out
+                </button>
+              )}
             </div>
           </div>
         </>

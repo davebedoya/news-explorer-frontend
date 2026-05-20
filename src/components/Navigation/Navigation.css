@@ -97,6 +97,14 @@
   color: black;
 }
 
+.nav__logo-link,
+.nav__logo-link:visited,
+.nav__logo-link:hover,
+.nav__logo-link:active {
+  text-decoration: none;
+  color: inherit;
+}
+
 /* tablet design */
 @media (max-width: 1024px) {
   .nav {

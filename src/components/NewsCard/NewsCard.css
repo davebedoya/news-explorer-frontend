@@ -138,10 +138,12 @@
   }
   .news-card__date {
   }
+
   .news-card__title {
     margin: 10px 0 0 0;
     font-size: 22px;
-    line-height: 22px;
+    line-height: 24px;
+    -webkit-line-clamp: 3;
   }
   .news-card__text-container {
     padding: 16px;
@@ -163,6 +165,18 @@
 
   .news-card__publisher {
     margin-top: 12px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .news-card__keyword {
+    top: 8px;
+    left: 8px;
+  }
+
+  .news-card__remove-tooltip {
+    visibility: hidden;
   }
 }
 

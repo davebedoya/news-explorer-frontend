@@ -32,13 +32,10 @@ function ModalWithForm({
       document.body.style.overflow = "";
     };
   }, [isOpen]);
-  //If modal is open → stop the page from scrolling
 
   return (
     <div className={`modal ${isOpen ? "modal_opened" : ""}`}>
-      {/* <div className="modal__content"> */}
       <div className={`modal__content ${contentModifier}`}>
-        {/* <h2 className="modal__title">{title}</h2> */}
         <h2 className={`modal__title ${titleModifier}`}>{title}</h2>
 
         <button onClick={onClose} type="button" className="modal__close">
@@ -56,7 +53,6 @@ function ModalWithForm({
             </button>
           )}
           {secondaryText && (
-            // <p className="modal__switch-text">
             <p
               className={`modal__switch-text ${!showOrText ? "modal__switch-text--success" : ""}`}
             >

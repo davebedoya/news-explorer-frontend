@@ -1,18 +1,21 @@
 import "./About.css";
+import headshot from "../../assets/headshot.jpeg";
 
 function About() {
   return (
     <div className="about">
-      <img className="about__image" />
+      <img className="about__image" src={headshot} />
       <div className="about__author_container">
         <h1 className="about__author_heading">About the author</h1>
         <p className="about__author_text">
-          This block describes the project author. Here you should indicate your
-          name, what you do, and which development technologies you know.
+          Hi, I’m David Bedoya, a software engineering student at TripleTen
+          focused on frontend and full-stack development with React, JavaScript,
+          HTML, CSS, and API integration.
           <br />
           <br />
-          You can also talk about your experience with TripleTen, what you
-          learned there, and how you can help potential customers.
+          This project helped me strengthen my skills in React components,
+          routing, responsive design, forms, and working with external APIs as I
+          continue preparing for a career in software engineering.
         </p>
       </div>
     </div>

@@ -72,6 +72,7 @@
   .about {
     flex-direction: column;
     padding: 32px 24px 128px;
+    align-items: center;
   }
 
   .about__image {
@@ -83,9 +84,6 @@
   .about__author_container {
     width: 288px;
     margin: 24px 0 0 0;
-  }
-
-  .about__author_heading {
   }
 
   .about__author_text {

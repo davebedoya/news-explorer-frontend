@@ -5,9 +5,10 @@ import linkedInIcon from "../../assets/icon/LinkedIn-icon.svg";
 function Footer() {
   return (
     <div className="footer">
-      <p className="footer__copyright">© 2026 Supersite, Powered by News API</p>
+      <p className="footer__copyright">
+        © 2026 David Bedoya, Powered by News API
+      </p>
       <div className="footer__services_container">
-        {/* <Link to="/" className="footer__home">Home</Link> */}
         <div className="footer__links">
           <a className="footer__home">Home</a>
           <a className="footer__tripleten" href="https://tripleten.com">

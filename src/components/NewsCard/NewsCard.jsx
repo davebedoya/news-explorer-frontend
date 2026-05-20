@@ -51,7 +51,6 @@ function NewsCard({ article, isSavedPage }) {
         className="news-card__image"
       />
       <div className="news-card__text-container">
-        {/* <p className="news-card__date">{dateConversion()}</p> */}
         <p className="news-card__date">
           {article.publishedAt.includes("T")
             ? dateConversion()
