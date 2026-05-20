@@ -9,7 +9,6 @@ function Navigation({
   isMobileMenuOpen,
   setIsMobileMenuOpen,
   isLoggedIn,
-  setIsLoggedIn,
   onLoginClick,
   isModalOpen,
   isHomePage,
@@ -117,7 +116,11 @@ function Navigation({
 
           <div className="nav__panel">
             <div className="nav__top nav__top--panel">
-              <NavLink to="/" className="nav__logo-link">
+              <NavLink
+                to="/"
+                className="nav__logo-link"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
                 <h1 className="nav__logo">NewsExplorer</h1>
               </NavLink>
 
@@ -131,7 +134,11 @@ function Navigation({
             </div>
 
             <div className="mobile-menu">
-              <NavLink className="mobile-menu__home-link" to="/">
+              <NavLink
+                className="mobile-menu__home-link"
+                to="/"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
                 Home
               </NavLink>
               {isLoggedIn && (
