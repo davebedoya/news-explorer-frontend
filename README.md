@@ -22,7 +22,7 @@ News Explorer is a responsive React application that allows users to search for 
 
 ## Live Demo
 
-https://YOURDEPLOYLINK.com
+https://davebedoya.github.io/news-explorer-frontend/
 
 ## Author
 
