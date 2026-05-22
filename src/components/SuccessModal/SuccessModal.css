@@ -1,0 +1,16 @@
+.modal__content--success {
+  padding: 43px 79px 51px 36px;
+}
+
+.modal__title--success {
+  margin-bottom: 14px;
+}
+
+.modal__switch-text--success {
+  margin: 0;
+  text-align: start;
+  font-family: "Inter";
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 100%;
+}

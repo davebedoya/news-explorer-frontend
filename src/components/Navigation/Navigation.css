@@ -1,0 +1,233 @@
+.nav {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  height: 80px;
+  align-items: center;
+  position: relative;
+  padding: 0 104px;
+}
+
+.nav__logo {
+  margin: 0;
+  font-family: "Roboto Slab", serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  cursor: pointer;
+  color: white;
+}
+
+.nav__links {
+  display: flex;
+  gap: 40px;
+  align-items: stretch;
+  height: 100%;
+}
+
+.nav__link {
+  position: relative;
+  text-decoration: none;
+  color: inherit;
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  color: white;
+}
+
+.nav__link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 3px;
+  background-color: white;
+  opacity: 0;
+}
+
+.nav__link:hover::after {
+  opacity: 1;
+}
+
+.header__auth-btn {
+  border: solid 1px;
+  border-radius: 100px;
+  background: none;
+  cursor: pointer;
+  width: 176px;
+  height: 48px;
+  align-self: center;
+  color: white;
+}
+.header__auth-btn-signed-in {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 112px;
+  height: 48px;
+}
+.header__auth-btn-signed-in-icon {
+  height: 24px;
+  width: 24px;
+  filter: brightness(0) invert(1);
+}
+.header__auth-btn-signed-in--saved-news {
+  color: black;
+}
+
+.header__auth-btn-signed-in-icon--saved-news {
+  filter: none;
+}
+.nav--saved-news {
+  border-bottom: 1px solid #d1d2d6;
+}
+.nav__logo--saved-news {
+  color: black;
+}
+.nav__link--saved-news {
+  color: black;
+}
+.nav__link--saved-news::after {
+  background-color: black;
+}
+
+.header__auth-btn--saved-news {
+  color: black;
+}
+
+.nav__logo-link,
+.nav__logo-link:visited,
+.nav__logo-link:hover,
+.nav__logo-link:active {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* tablet design */
+@media (max-width: 1024px) {
+  .nav {
+    padding: 0 40px;
+    height: 66px;
+  }
+
+  .nav__links {
+    gap: 16px;
+  }
+
+  .nav__link {
+    padding: 0 20px;
+  }
+
+  .header__auth-btn {
+    max-width: 152px;
+    height: 40px;
+  }
+}
+
+/* mobile design */
+@media (max-width: 768px) {
+  .nav {
+    padding: 0 16px;
+  }
+
+  .nav__panel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 20;
+    box-sizing: border-box;
+    background-color: #1a1b22;
+    min-height: 230px;
+    padding: 16px;
+    border-radius: 0 0 16px 16px;
+  }
+
+  .nav__panel .nav__logo {
+    position: relative;
+    top: 3px;
+  }
+
+  .nav__top--panel::after {
+    content: "";
+    position: absolute;
+    left: -16px;
+    right: -16px;
+    bottom: -24px;
+    height: 1px;
+    background-color: rgba(209, 210, 214, 0.3);
+  }
+
+  .nav__open-backdrop {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 15;
+  }
+
+  .mobile-menu {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 21;
+    margin-top: 32px;
+  }
+
+  .nav__top {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    position: relative;
+    align-items: center;
+  }
+
+  .mobile-menu__home-link {
+    font-family: Roboto;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 56px;
+    letter-spacing: 0px;
+    color: white;
+  }
+
+  .nav__mobile-menu-btn {
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  .mobile-menu__auth-btn {
+    margin-top: 22px;
+    border: solid 1px white;
+    border-radius: 100px;
+    background: none;
+    cursor: pointer;
+    width: 100%;
+    color: white;
+    /* padding: 16px 116px; */
+    height: 56px;
+    /* align-self: center; */
+    font-family: "Roboto", serif;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: 0px;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  .mobile-menu__home-link {
+    text-decoration: none;
+  }
+
+  .nav__mobile-menu-btn {
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }
+}

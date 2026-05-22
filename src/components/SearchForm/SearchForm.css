@@ -1,0 +1,157 @@
+.searchForm {
+  margin-top: 80px;
+  display: flex;
+  justify-content: center;
+}
+
+.searchForm__container {
+  display: flex;
+  align-items: start;
+  flex-direction: column;
+  max-width: 608px;
+}
+
+.searchForm__heading {
+  color: white;
+  font-family: "Roboto Slab", serif;
+  font-weight: 400;
+  font-size: 60px;
+  line-height: 64px;
+  letter-spacing: 0px;
+  margin: 0;
+}
+
+.searchForm__sub-heading {
+  color: white;
+  font-family: "Roboto", serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: 0px;
+  margin: 32px 0 0;
+}
+
+.searchForm__search-bar {
+  width: 608px;
+  position: relative;
+  margin: 88px 0 0;
+}
+
+.searchForm__input {
+  width: 100%;
+  height: 64px;
+  padding: 0 180px 0 24px;
+  border: 0;
+  border-radius: 100px;
+  box-sizing: border-box;
+}
+.searchForm__button {
+  width: 168px;
+  height: 64px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0;
+  background-color: #2f71e5;
+  color: white;
+  border: 0;
+  border-radius: 100px;
+  cursor: pointer;
+}
+
+.searchForm__button:hover {
+  background-color: #347eff;
+}
+
+.searchForm__button:active {
+  background-color: #2a65cc;
+}
+
+.searchForm__input::placeholder {
+  color: #b6bcbf;
+}
+
+/* tablet */
+@media (max-width: 1024px) {
+  .searchForm {
+    margin-top: 38px;
+  }
+  .searchForm__container {
+    width: 452px;
+  }
+
+  .searchForm__heading {
+    font-family: "Roboto Slab", serif;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 40px;
+    letter-spacing: 0px;
+  }
+
+  .searchForm__sub-heading {
+    margin-top: 16px;
+
+    font-family: "Roboto", serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: 0px;
+  }
+
+  .searchForm__search-bar {
+    width: 448px;
+    height: 56px;
+    margin: 48px 0 0;
+  }
+
+  .searchForm__input {
+    height: 56px;
+  }
+  .searchForm__button {
+    width: 160px;
+    height: 56px;
+  }
+}
+
+/* mobile */
+@media (max-width: 768px) {
+  .searchForm {
+    margin-top: 30px;
+  }
+  .searchForm__container {
+    width: 288px;
+  }
+
+  .searchForm__heading {
+    font-family: "Roboto Slab", serif;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 40px;
+    letter-spacing: 0px;
+  }
+
+  .searchForm__sub-heading {
+    margin-top: 16px;
+    font-family: "Roboto", serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: 0px;
+  }
+
+  .searchForm__search-bar {
+    width: 288px;
+    height: 56px;
+    margin: 122px 0 0;
+  }
+
+  .searchForm__input {
+    height: 56px;
+  }
+  .searchForm__button {
+    position: static;
+    width: 288px;
+    height: 56px;
+    margin-top: 16px;
+  }
+}
