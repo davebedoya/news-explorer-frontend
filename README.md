@@ -20,6 +20,24 @@ News Explorer is a responsive React application that allows users to search for 
 - Dynamic navigation based on authorization state
 - API integration with asynchronous requests
 
+## Screenshots
+
+### Homepage
+
+![Homepage](./src/assets/readme/news-home.jpeg)
+
+### Saved News Page
+
+![Saved News](./src/assets/readme/news-saved.jpeg)
+
+### Mobile Sign In Modal
+
+![Mobile Sign In Modal](./src/assets/readme/news-mobile-sign-in.jpeg)
+
+### Mobile Navigation Menu
+
+![Mobile Navigation Menu](./src/assets/readme/news-mobile.jpeg)
+
 ## Live Demo
 
 https://davebedoya.github.io/news-explorer-frontend/
